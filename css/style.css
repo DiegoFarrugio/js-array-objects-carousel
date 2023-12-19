@@ -1,0 +1,18 @@
+.img_container{
+    width: 500px;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+img{
+    width: 100%;
+    height: 400px;
+}
+
+.description_img{
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    color: white;
+}
