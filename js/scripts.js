@@ -1,5 +1,4 @@
 const images = [
-
     {
         url: 'http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg',
         title: 'Svezia',
@@ -29,22 +28,25 @@ const images = [
     },
 ];
 
-console.log('images', images, typeof images);
+console.log('Arrayimages', images, typeof images);
 
-const leftButton = document.getElementById('left_button');
-console.log('leftButton', leftButton, typeof leftButton);
+
+//Mi stampo i bottoni in HTML
 
 const rightButton = document.getElementById('right_button');
+const leftButton = document.getElementById('left_button');
 console.log('rightButton', rightButton, typeof rightButton);
+console.log('leftButton', leftButton, typeof leftButton);
 
-
-const containerCarosel = document.getElementById('containerCarosel');
-for(let i = 0; i < images.length; i++){
+// aggiungo gli elemnti prendendo i dati dall'array iniziale
+const caroselContainer = document.getElementById('carosel_container'); //Con questo inserisco tutto nell'HTML nel carosel container
+for(let i=0; i<images.length; i++){
     if (i==0){
-        containerCarosel.innerHTML += `
+        //Con l'inner HTML mi stampo tutto sull HTML inserendo anche le classi
+        caroselContainer.innerHTML += ` 
         <div class="img_container active">
-            <img src="${images[i].url}" alt="">
-            <div class="description_img">
+            <img src="${images[i].url}" alt=""> 
+            <div class="info_img">
                 <h3 class="text-end">
                     ${images[i].title}
                 </h3>
@@ -54,13 +56,11 @@ for(let i = 0; i < images.length; i++){
             </div>
         </div> 
         `  
-    }
-
-    else{
-        containerCarosel.innerHTML += `
+    }else{
+        caroselContainer.innerHTML += `
         <div class="img_container">
             <img src="${images[i].url}" alt="">
-            <div class="description_img">
+            <div class="info_img">
                 <h3 class="text-end">
                     ${images[i].title}
                 </h3>
@@ -69,10 +69,35 @@ for(let i = 0; i < images.length; i++){
                 </p>
             </div>
         </div> 
-        `  
+        `
     }
+
 }
+const allElementCarosel = document.querySelectorAll('.img_container');
+console.log('allElementCarosel', allElementCarosel,allElementCarosel.length, typeof allElementCarosel);
 
-const elementCarosel = document.querySelector('.img_container');
-console.log('Img Container', elementCarosel, typeof elementCarosel);
 
+let i = 0;
+rightButton.addEventListener('click', function(){
+    allElementCarosel[i].classList.toggle('active');
+    i++;
+    if(i == images.length){
+        i=0;
+        console.log(i);
+    }
+    console.log(i);
+    allElementCarosel[i].classList.toggle('active');
+    console.log(i);
+})
+
+leftButton.addEventListener('click', function(){
+    allElementCarosel[i].classList.toggle('active');
+    i--;
+    if(i < 0){
+        i = allElementCarosel.length -1;
+        console.log(i);
+    }
+    console.log(i);
+    allElementCarosel[i].classList.toggle('active');
+    console.log(i);
+})

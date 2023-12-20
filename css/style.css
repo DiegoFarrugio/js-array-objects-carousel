@@ -1,7 +1,10 @@
+
+
 .img_container{
     width: 500px;
     margin: 0 auto;
     position: relative;
+    display: none;
 }
 
 
@@ -10,9 +13,14 @@ img{
     height: 400px;
 }
 
-.description_img{
+
+.info_img{
     position: absolute;
     bottom: 0;
-    right: 15px;
+    right: 10px;
     color: white;
+}
+
+.active{
+    display: block;
 }
